@@ -1,0 +1,17 @@
+﻿CREATE TABLE [dpd].[QRYM_DRUG_PRODUCT] (
+    [DRUG_CODE]                  NCHAR (8)      NOT NULL,
+    [PRODUCT_CATEGORIZATION]     NVARCHAR (80)  NULL,
+    [CLASS]                      NVARCHAR (40)  NULL,
+    [DRUG_IDENTIFICATION_NUMBER] NVARCHAR (8)   NULL,
+    [BRAND_NAME]                 NVARCHAR (200) NULL,
+    [DESCRIPTOR]                 NVARCHAR (150) NULL,
+    [PEDIATRIC_FLAG]             NVARCHAR (1)   NULL,
+    [ACCESSION_NUMBER]           NVARCHAR (5)   NULL,
+    [NUMBER_OF_AIS]              NVARCHAR (10)  NULL,
+    [LAST_UPDATE_DATE]           AS             (CONVERT([date],[LAST_UPDATE_DATE_CHAR],0)),
+    [AI_GROUP_NO]                NVARCHAR (10)  NULL,
+    [LAST_UPDATE_DATE_CHAR]      NVARCHAR (11)  NULL,
+    PRIMARY KEY CLUSTERED ([DRUG_CODE] ASC),
+    CONSTRAINT [CK_QRYM_DRUG_PRODUCT_DRUG_CODE] CHECK (NOT [DRUG_CODE] like '%[^0-9 ]%')
+);
+

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DrugProductDatabase", "DrugProductDatabase\DrugProductDatabase.sqlproj", "{343DEED2-CEEC-48C1-BA80-F3D1CDD25601}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21F8BA3F-BF15-4006-BA5C-1F134018FBA5}"
+	ProjectSection(SolutionItems) = preProject
+		DrugProductDatabase-20160407.bak = DrugProductDatabase-20160407.bak
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{343DEED2-CEEC-48C1-BA80-F3D1CDD25601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{343DEED2-CEEC-48C1-BA80-F3D1CDD25601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{343DEED2-CEEC-48C1-BA80-F3D1CDD25601}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{343DEED2-CEEC-48C1-BA80-F3D1CDD25601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{343DEED2-CEEC-48C1-BA80-F3D1CDD25601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{343DEED2-CEEC-48C1-BA80-F3D1CDD25601}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+10.0
+5
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE 		""
+3   SQLCHAR 0   1      "\",\""      2   CURRENT_STATUS_FLAG 	""
+4   SQLCHAR 0   40     "\",\""      3   STATUS 			""
+5   SQLCHAR 0   11     "\"\r\n"     4   HISTORY_DATE_CHAR       ""
+

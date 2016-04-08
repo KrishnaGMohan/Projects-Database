@@ -1,0 +1,7 @@
+10.0
+4
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE 		""
+3   SQLCHAR 0   7      "\",\""      2   PHARM_FORM_CODE 	""
+4   SQLCHAR 0   40     "\"\r\n"     3   PHARMACEUTICAL_FORM     ""
+

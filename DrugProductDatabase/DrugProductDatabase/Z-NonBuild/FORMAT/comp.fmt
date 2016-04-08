@@ -1,0 +1,20 @@
+10.0
+17
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE 		""
+3   SQLCHAR 0   5      "\",\""      2   MFR_CODE                ""
+4   SQLCHAR 0   6      "\",\""      3   COMPANY_CODE		""
+5   SQLCHAR 0   80     "\",\""      4   COMPANY_NAME            ""
+6   SQLCHAR 0   40     "\",\""      5   COMPANY_TYPE 		""
+7   SQLCHAR 0   1      "\",\""      6   ADDRESS_MAILING_FLAG    ""
+8   SQLCHAR 0   1      "\",\""      7   ADDRESS_BILLING_FLAG	""
+9   SQLCHAR 0   1      "\",\""      8   ADDRESS_NOTIFICATION_FLAG     	""
+10  SQLCHAR 0   1      "\",\""      9   ADDRESS_OTHER  		""
+11  SQLCHAR 0   20     "\",\""      10  SUITE_NUMBER     	""
+12  SQLCHAR 0   80     "\",\""      11  STREET_NAME     	""
+13  SQLCHAR 0   60     "\",\""      12  CITY_NAME     	        ""
+14  SQLCHAR 0   40     "\",\""      13  PROVINCE     	        ""
+15  SQLCHAR 0   40     "\",\""      14  COUNTRY     	        ""
+16  SQLCHAR 0   20     "\",\""      15  POSTAL_CODE    	        ""
+17  SQLCHAR 0   15     "\"\r\n"     16  POST_OFFICE_BOX	        ""
+

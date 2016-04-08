@@ -1,0 +1,7 @@
+10.0
+4
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE 		""
+3   SQLCHAR 0   6      "\",\""      2   ROUTE_OF_ADMINISTRATION_CODE 	""
+4   SQLCHAR 0   40     "\"\r\n"     3   ROUTE_OF_ADMINISTRATION ""
+

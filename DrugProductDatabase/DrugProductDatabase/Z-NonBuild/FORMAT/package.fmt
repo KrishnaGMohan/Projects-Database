@@ -1,0 +1,9 @@
+10.0
+7
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE      		""
+3   SQLCHAR 0   12     "\",\""      2   UPC         		""
+4   SQLCHAR 0   40     "\",\""      3   PACKAGE_SIZE_UNIT 	""
+5   SQLCHAR 0   40     "\",\""      4   PACKAGE_TYPE 		""
+6   SQLCHAR 0   5      "\",\""      5   PACKAGE_SIZE 		""
+7   SQLCHAR 0   80     "\"\r\n"     6   PRODUCT_INFORMATION     ""

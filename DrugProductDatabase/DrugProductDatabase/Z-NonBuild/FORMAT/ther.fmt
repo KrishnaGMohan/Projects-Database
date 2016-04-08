@@ -1,0 +1,8 @@
+10.0
+6
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE      		""
+3   SQLCHAR 0   8      "\",\""      2   TC_ATC_NUMBER    	""
+4   SQLCHAR 0   120    "\",\""      3   TC_ATC          	""
+5   SQLCHAR 0   20     "\",\""      4   TC_AHFS_NUMBER 		""
+6   SQLCHAR 0   80     "\"\r\n"     5   TC_AHFS    		""

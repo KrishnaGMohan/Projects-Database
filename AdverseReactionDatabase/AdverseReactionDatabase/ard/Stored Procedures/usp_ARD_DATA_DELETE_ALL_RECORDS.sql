@@ -1,0 +1,28 @@
+﻿-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE ard.usp_ARD_DATA_DELETE_ALL_RECORDS 
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DELETE FROM ard.DRUG_PRODUCT;
+	DELETE FROM ard.DRUG_PRODUCT_INGREDIENTS;
+	DELETE FROM ard.REACTIONS;
+/*
+	DELETE FROM dpd.QRYM_PHARMACEUTICAL_STD;
+	DELETE FROM dpd.QRYM_ROUTE;
+	DELETE FROM dpd.QRYM_SCHEDULE;
+	DELETE FROM dpd.QRYM_THERAPEUTIC_CLASS;
+	DELETE FROM dpd.QRYM_VETERINARY_SPECIES;
+	DELETE FROM dpd.QRYM_STATUS;
+	DELETE FROM dpd.QRYM_ACTIVE_INGREDIENTS;
+	DELETE FROM dpd.QRYM_COMPANIES;
+	DELETE FROM dpd.QRYM_FORM;
+
+    DELETE FROM dpd.QRYM_DRUG_PRODUCT;
+	*/
+END

@@ -1,0 +1,15 @@
+10.0
+12
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE 		""
+3   SQLCHAR 0   80     "\",\""      2   PRODUCT_CATEGORIZATION 	""
+4   SQLCHAR 0   40     "\",\""      3   CLASS 			""
+5   SQLCHAR 0   8      "\",\""      4   DRUG_IDENTIFICATION_NUMBER ""
+6   SQLCHAR 0   200    "\",\""      5   BRAND_NAME 		""
+7   SQLCHAR 0   150    "\",\""      6   DESCRIPTOR 		""
+8   SQLCHAR 0   1      "\",\""      7   PEDIATRIC_FLAG 		""
+9   SQLCHAR 0   5      "\",\""      8   ACCESSION_NUMBER 	""
+10  SQLCHAR 0   10     "\",\""      9   NUMBER_OF_AIS 		""
+11  SQLCHAR 0   11     "\",\""      10  LAST_UPDATE_DATE_CHAR 	""
+12  SQLCHAR 0   10     "\"\r\n"     11  AI_GROUP_NO 		""
+

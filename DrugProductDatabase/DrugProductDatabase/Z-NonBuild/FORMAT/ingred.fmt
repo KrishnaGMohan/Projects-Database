@@ -1,0 +1,15 @@
+10.0
+12
+1   SQLCHAR 0   1      "\""         0   FirstQuote  		""
+2   SQLCHAR 0   8      "\",\""      1   DRUG_CODE 		""
+3   SQLCHAR 0   6      "\",\""      2   ACTIVE_INGREDIENT_CODE 	""
+4   SQLCHAR 0   240    "\",\""      3   INGREDIENT		""
+5   SQLCHAR 0   1      "\",\""      4   INGREDIENT_SUPPLIED_IND ""
+6   SQLCHAR 0   20     "\",\""      5   STRENGTH_CHAR 		""
+7   SQLCHAR 0   40     "\",\""      6   STRENGTH_UNIT 		""
+8   SQLCHAR 0   40     "\",\""      7   STRENGTH_TYPE 		""
+9   SQLCHAR 0   20     "\",\""      8   DOSAGE_VALUE     	""
+10  SQLCHAR 0   1      "\",\""      9   BASE    		""
+11  SQLCHAR 0   40     "\",\""      10  DOSAGE_UNIT     	""
+12  SQLCHAR 0   2000   "\"\r\n"     11  NOTES 		        ""
+
