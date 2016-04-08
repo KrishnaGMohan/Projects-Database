@@ -100,10 +100,6 @@
     <Build Include="dpd\Views\loadvw_QRYM_ACTIVE_INGREDIENTS.sql" />
   </ItemGroup>
   <ItemGroup>
-    <RefactorLog Include="DrugProductDatabase.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="PostDeployment\aa.sql" />
     <None Include="PostDeployment\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>

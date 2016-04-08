@@ -3,3 +3,10 @@
 ################################################################################
 
 /DrugProductDatabase/DrugProductDatabase/bin/Debug
+/DrugProductDatabase/DrugProductDatabase/obj/Debug
+/DrugProductDatabase/.vs/DrugProductDatabase/v14
+/AdverseReactionDatabase/AdverseReactionDatabase/bin/Debug
+/AdverseReactionDatabase/AdverseReactionDatabase/obj/Debug
+/DrugProductDatabase/DrugProductDatabase/DrugProductDatabase.dbmdl
+/DrugProductDatabase/DrugProductDatabase/DrugProductDatabase.sqlproj.user
+/AdverseReactionDatabase/AdverseReactionDatabase/AdverseReactionDatabase.sqlproj.user
