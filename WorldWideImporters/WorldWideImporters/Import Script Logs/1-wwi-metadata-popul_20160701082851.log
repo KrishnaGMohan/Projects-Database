@@ -1,0 +1,6 @@
+2016-07-01 4:28:51 PM	This log contains information about the import operation of the script '1-wwi-metadata-population.sql' into project 'WorldWideImporters' on computer 'KRGANDHI-W541' by user'krgandhi.
+2016-07-01 4:28:51 PM	Started importing file: C:\Users\krgandhi\AppData\Local\Temp\tmpDB41.tmp 
+2016-07-01 4:28:51 PM	File name C:\Users\krgandhi\AppData\Local\Temp\tmpDB41.tmp (size: 18789584)
+2016-07-01 4:28:51 PM	Parsing import script
+2016-07-01 4:28:52 PM	A summary of the import was saved to the following location: E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\Import Script Logs\1-wwi-metadata-popul_20160701082851.log
+2016-07-01 4:28:52 PM	Click Finish to continue...

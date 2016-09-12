@@ -1,0 +1,9 @@
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\bin\Debug\WorldWideImporters.dacpac
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\bin\Debug\WorldWideImporters.dll
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\bin\Debug\WorldWideImporters.pdb
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\obj\Debug\Model.xml
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\obj\Debug\refactor.xml
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\obj\Debug\postdeploy.sql
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\obj\Debug\predeploy.sql
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\obj\Debug\WorldWideImporters.dll
+E:\Personal\OneDrive\Projects\Projects-Database\WorldWideImporters\WorldWideImporters\obj\Debug\WorldWideImporters.pdb

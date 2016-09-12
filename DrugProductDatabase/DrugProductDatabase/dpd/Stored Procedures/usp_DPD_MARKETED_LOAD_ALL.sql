@@ -17,8 +17,6 @@ BEGIN
 
 	DECLARE curLoadList CURSOR 
 	FOR
-
-	
 	SELECT 'INSERT INTO ' + ObjectName + ' ' +
 		'SELECT A.* FROM OPENROWSET( 
 		 BULK ''' + @dir + '\DATA\' + DataFile + ''',

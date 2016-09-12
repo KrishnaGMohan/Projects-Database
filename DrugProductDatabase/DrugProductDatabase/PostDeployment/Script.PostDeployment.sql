@@ -25,4 +25,4 @@ INSERT INTO [control].[LoadList] VALUES ('[DPD].[QRYM_VETERINARY_SPECIES]','VET.
 
 DELETE FROM [control].[ControlTable]
 
-INSERT INTO [control].[ControlTable](DataDir) VALUES ('E:\Personal\OneDrive\Projects\Projects-Database\DrugProductDatabase\DrugProductDatabase\Z-NonBuild\')
+INSERT INTO [control].[ControlTable](DataDir) VALUES ('D:\Personal\OneDrive\Projects\Projects-Database\DrugProductDatabase\DrugProductDatabase\Z-NonBuild\')
