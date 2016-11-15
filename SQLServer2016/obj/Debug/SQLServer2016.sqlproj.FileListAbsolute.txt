@@ -1,0 +1,9 @@
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\bin\Debug\SQLServer2016.dacpac
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\bin\Debug\SQLServer2016.dll
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\bin\Debug\SQLServer2016.pdb
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\obj\Debug\Model.xml
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\obj\Debug\refactor.xml
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\obj\Debug\postdeploy.sql
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\obj\Debug\predeploy.sql
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\obj\Debug\SQLServer2016.dll
+D:\Personal\OneDrive\Projects\Projects-Database\SQLServer2016\obj\Debug\SQLServer2016.pdb

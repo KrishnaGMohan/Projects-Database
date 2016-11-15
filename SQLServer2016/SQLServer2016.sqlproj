@@ -57,5 +57,23 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="DynamicDataMasking" />
+    <Folder Include="JSON Support" />
+    <Folder Include="Temporal Tables" />
+    <Folder Include="RowLevel Security" />
+    <Folder Include="AlwaysEncrypted" />
+    <Folder Include="In-MemoryOLTP" />
+    <Folder Include="Columnstore Indexes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="DynamicDataMasking\01.DDM_Demo.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="JSON Support\01.JSON.sql" />
+    <None Include="Temporal Tables\01.TemporalTables.sql" />
+    <None Include="RowLevel Security\01.RowLevel Security.sql" />
+    <None Include="AlwaysEncrypted\01.AlwaysEncrypted.sql" />
+    <None Include="In-MemoryOLTP\In-Memory OLTP.sql" />
+    <None Include="Columnstore Indexes\01. ColumnStore Indexes.sql" />
   </ItemGroup>
 </Project>
