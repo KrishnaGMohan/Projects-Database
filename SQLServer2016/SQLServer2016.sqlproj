@@ -64,9 +64,13 @@
     <Folder Include="AlwaysEncrypted" />
     <Folder Include="In-MemoryOLTP" />
     <Folder Include="Columnstore Indexes" />
+    <Folder Include="AlwaysON" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="DynamicDataMasking\01.DDM_Demo.sql" />
+    <Build Include="AlwaysON\ReadOnlyRoutingURL.sql" />
+    <Build Include="AlwaysON\ReadOnlyRouting.sql" />
+    <Build Include="AlwaysON\PowerShell.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="JSON Support\01.JSON.sql" />
