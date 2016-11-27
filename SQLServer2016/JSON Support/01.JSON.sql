@@ -82,11 +82,11 @@ GO
 INSERT INTO SupplierJSON
 SELECT a.[Supplier Key], a.[WWI Supplier ID],
 	( SELECT [Supplier], [Category], [Primary Contact], [Supplier Reference]
-		FROM Supplier b
+		FROM [Dimension].[Supplier] b
 		WHERE a.[Supplier Key] = b.[Supplier Key]
 		FOR JSON PATH, WITHOUT_ARRAY_WRAPPER 
 	) AS Info
-FROM Supplier a
+FROM [Dimension].[Supplier]  a
 GO
 
 SELECT *, ISJSON(Info) AS [IsJSON?]
@@ -110,12 +110,12 @@ INSERT INTO SupplierJSON
 SELECT a.[Supplier Key], a.[WWI Supplier ID],
 	COMPRESS (
 		( SELECT [Supplier], [Category], [Primary Contact], [Supplier Reference]
-			FROM Supplier b
+			FROM [Dimension].[Supplier] b
 			WHERE a.[Supplier Key] = b.[Supplier Key]
 			FOR JSON PATH, WITHOUT_ARRAY_WRAPPER 
 		) 
 	) AS Info
-FROM Supplier a
+FROM [Dimension].[Supplier] a
 GO
 
 SELECT  CAST(DECOMPRESS(info) AS NVARCHAR(MAX)) AS info  
@@ -188,11 +188,11 @@ GO
 INSERT INTO SupplierJSON
 SELECT a.[Supplier Key], a.[WWI Supplier ID],
 	( SELECT [Supplier], [Category], [Primary Contact], [Supplier Reference]
-		FROM Supplier b
+		FROM Dimension.Supplier b
 		WHERE a.[Supplier Key] = b.[Supplier Key]
 		FOR JSON PATH, WITHOUT_ARRAY_WRAPPER 
 	) AS Info
-FROM Supplier a
+FROM Dimension.Supplier a
 GO
 
 SELECT *, ISJSON(Info) AS [IsJSON?]
@@ -221,7 +221,7 @@ WITH (
 --------------------------------------------------------------------------------
 
 SELECT TOP 2 [Supplier Key], Supplier, Category
-FROM [dbo].[Supplier]
+FROM [Dimension].[Supplier]
 WHERE [Supplier Key] != 0
 FOR JSON AUTO
 
@@ -238,12 +238,12 @@ FOR JSON AUTO
 */
 
 SELECT TOP 2 [Supplier Key], Supplier, Category
-FROM [dbo].[Supplier]
+FROM [Dimension].[Supplier]
 WHERE [Supplier Key] != 0
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 SELECT TOP 2 [Supplier Key], Supplier, Category
-FROM [dbo].[Supplier]
+FROM [Dimension].[Supplier]
 WHERE [Supplier Key] != 0
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER, INCLUDE_NULL_VALUES 
 /*
@@ -269,7 +269,7 @@ SELECT TOP 2
  [Category] AS [Info.Category],
  [Primary Contact] AS [Info.PrimaryContact],
  [Supplier Reference] AS [Info.SupplierReference]
-FROM [dbo].[Supplier]
+FROM [Dimension].[Supplier]
 WHERE [Supplier Key] != 0
 FOR JSON PATH, WITHOUT_ARRAY_WRAPPER 
 
@@ -307,7 +307,7 @@ SELECT TOP 2
  [Category] AS [Info.Category],
  [Primary Contact] AS [Info.PrimaryContact],
  [Supplier Reference] AS [Info.SupplierReference]
-FROM [dbo].[Supplier]
+FROM [Dimension].[Supplier]
 WHERE [Supplier Key] != 0
 FOR JSON PATH, ROOT('Suppliers'), INCLUDE_NULL_VALUES;
 

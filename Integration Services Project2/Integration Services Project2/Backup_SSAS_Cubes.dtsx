@@ -1,0 +1,460 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/22/2013 11:26:19 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CASFHQ3-SQLDV27"
+  DTS:CreatorName="VAN\rfsilva"
+  DTS:DTSID="{7C65F5E3-218E-4DC5-8CCD-5526AE1A153C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Backup_SSAS_Cubes"
+  DTS:PackageType="5"
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{71F10030-45C5-493D-99B1-8A191069FA61}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Backup_OLAP]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{6CF7D1ED-8B76-450F-947C-6A8D3D489485}"
+      DTS:ObjectName="Backup_OLAP">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source="+ @[$Project::OLAP_ServerName] +";Provider=MSOLAP.5;Impersonation Level=Impersonate;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OLAP;Provider=MSOLAP.5;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Backup_TABULAR]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{4C7008D7-C488-4735-896A-5500D78BE3AB}"
+      DTS:ObjectName="Backup_TABULAR">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source="+ @[$Project::TABULAR_ServerName]  +";Provider=MSOLAP.5;Impersonation Level=Impersonate;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TABULAR;Provider=MSOLAP.5;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Loop_OLAP]"
+      DTS:CreationName="ADO.NET:OLEDB"
+      DTS:DTSID="{88AAD214-E034-492B-A7D0-2924EC7D4B5F}"
+      DTS:ObjectName="Loop_OLAP">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::OLAP_ServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OLAP;Provider=MSOLAP.6;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Loop_TABULAR]"
+      DTS:CreationName="ADO.NET:OLEDB"
+      DTS:DTSID="{1BCE43A6-DF03-4FED-AFD9-70B0A63964D9}"
+      DTS:ObjectName="Loop_TABULAR">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::TABULAR_ServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TABULAR;Provider=MSOLAP.6;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:CreationName="Microsoft.LogProviderEventLog"
+      DTS:Description="Writes log entries for events to the Event Log"
+      DTS:DTSID="{0C93F917-E483-4966-92A7-985147699E69}"
+      DTS:ObjectName="SSIS log provider for Windows Event Log">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D98482F5-AC66-4959-A368-869B6BF83F8B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OlapBackupScript">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5BB507D2-B2E5-4580-BE41-15CB61FB4609}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OlapDatabaseName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5899A8A2-8327-462B-8CED-DBEBD1BBBCDC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TabBackupScript">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8E3FEC9B-9EF4-4E05-BBCD-5394D00CD453}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TabDatabaseName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">3,7,OnError,13,OnInformation,13,OnPostExecute</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{0C93F917-E483-4966-92A7-985147699E69}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach OLAP objects"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{9EF472C3-FC4E-4238-80B5-0FF4AB35AFBD}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach OLAP objects">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachSchemaRowsetEnumerator"
+        DTS:DTSID="{3B47B485-E03E-4393-80D9-600A5E7FA255}"
+        DTS:ObjectName="{3B47B485-E03E-4393-80D9-600A5E7FA255}">
+        <DTS:ObjectData>
+          <FEESchemaRowset
+            Connection="Loop_OLAP"
+            Schema="c8b52211-5cf3-11ce-ade5-00aa0044773d" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach OLAP objects\Analysis Services Execute DDL Task"
+          DTS:CreationName="Microsoft.ASExecuteDDLTask"
+          DTS:Description="Analysis Services Execute DDL Task"
+          DTS:DTSID="{E89F0FDC-8296-4267-908C-36615C3D1C6E}"
+          DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Analysis Services Execute DDL Task"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ASDdlData
+              ConnectionName="Backup_OLAP"
+              SourceType="Variable"
+              Source="User::OlapBackupScript" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach OLAP objects\Script Task"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{D1D0DBFF-7211-4CBE-8204-BD6F3A72B65E}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Script Task"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData />
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach OLAP objects.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{14EE9045-0CC9-442C-828E-54F442E617A1}"
+          DTS:From="Package\Foreach OLAP objects\Script Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach OLAP objects\Analysis Services Execute DDL Task" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{2B7B5F2E-5846-4336-A5DA-A736447FB90B}"
+          DTS:ObjectName="{2B7B5F2E-5846-4336-A5DA-A736447FB90B}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::OlapDatabaseName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach TABULAR objects"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{D0E28CCD-C011-411F-AEC1-067902353F5F}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach TABULAR objects">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachSchemaRowsetEnumerator"
+        DTS:DTSID="{29F33785-AD39-40C8-AD11-4698EFF3F563}"
+        DTS:ObjectName="{29F33785-AD39-40C8-AD11-4698EFF3F563}">
+        <DTS:ObjectData>
+          <FEESchemaRowset
+            Connection="Loop_TABULAR"
+            Schema="c8b52211-5cf3-11ce-ade5-00aa0044773d" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach TABULAR objects\Analysis Services Execute DDL Task"
+          DTS:CreationName="Microsoft.ASExecuteDDLTask"
+          DTS:Description="Analysis Services Execute DDL Task"
+          DTS:DTSID="{D1FD737E-995B-4950-83EA-09A703004960}"
+          DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Analysis Services Execute DDL Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ASDdlData
+              ConnectionName="Backup_TABULAR"
+              SourceType="Variable"
+              Source="User::TabBackupScript" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach TABULAR objects\Script Task"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{3B1EA5AB-FDAB-4339-AA82-08E0F3277E29}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Script Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData />
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach TABULAR objects.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{323437B0-7D06-4A58-B0FF-4E7F81990B69}"
+          DTS:From="Package\Foreach TABULAR objects\Script Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach TABULAR objects\Analysis Services Execute DDL Task" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{A50ACDBF-252C-4C8C-9436-4DA2E976CBCF}"
+          DTS:ObjectName="{A50ACDBF-252C-4C8C-9436-4DA2E976CBCF}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::TabDatabaseName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Foreach OLAP objects\Analysis Services Execute DDL Task"
+          TopLeft="51,104" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Foreach OLAP objects\Script Task"
+          TopLeft="51,24" />
+        <EdgeLayout
+          Id="Package\Foreach OLAP objects.PrecedenceConstraints[Constraint]"
+          TopLeft="116.5,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58,38"
+              Start="0,0"
+              End="58,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="54,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54,19"
+                    Point2="58,19"
+                    Point3="58,23" />
+                  <mssgle:LineSegment
+                    End="58,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="362,201"
+          Size="362,244"
+          Id="Package\Foreach OLAP objects"
+          TopLeft="52.1021007231122,56.2655283641101" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Foreach TABULAR objects\Analysis Services Execute DDL Task"
+          TopLeft="65.4285714285714,90.1428571428572" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Foreach TABULAR objects\Script Task"
+          TopLeft="68.2857142857143,17.2857142857143" />
+        <EdgeLayout
+          Id="Package\Foreach TABULAR objects.PrecedenceConstraints[Constraint]"
+          TopLeft="133.785714285714,59.2857142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.1428571428571,30.8571428571429"
+              Start="0,0"
+              End="55.1428571428571,23.3571428571429">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.4285714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4285714285714"
+                    Point2="0,15.4285714285714"
+                    Point3="4,15.4285714285714" />
+                  <mssgle:LineSegment
+                    End="51.1428571428571,15.4285714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.1428571428571,15.4285714285714"
+                    Point2="55.1428571428571,15.4285714285714"
+                    Point3="55.1428571428571,19.4285714285714" />
+                  <mssgle:LineSegment
+                    End="55.1428571428571,23.3571428571429" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="362,201"
+          Size="362,244"
+          Id="Package\Foreach TABULAR objects"
+          TopLeft="503.568979379764,56.2655283641101" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[Backup_OLAP]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[Backup_TABULAR]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

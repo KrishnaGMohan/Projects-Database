@@ -1,0 +1,674 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/22/2013 11:26:19 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CASFHQ3-SQLDV27"
+  DTS:CreatorName="VAN\rfsilva"
+  DTS:DTSID="{AFCE4B8E-D66F-4AC1-B4D7-32EF8DBFE1A0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.4100.1"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Process_SSAS_Cubes"
+  DTS:PackageType="5"
+  DTS:VersionBuild="99"
+  DTS:VersionGUID="{59669597-43AC-4C9D-B865-BE2ABC0AB679}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Loop_OLAP]"
+      DTS:CreationName="ADO.NET:OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{8FBB15A9-A96C-46BE-B987-0843534F8E0F}"
+      DTS:ObjectName="Loop_OLAP">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=" + @[$Project::OLAP_ServerName] + ";Provider=MSOLAP.5;Integrated Security=SSPI;"</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::OLAP_ServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OLAP;Provider=MSOLAP.5;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Loop_TABULAR]"
+      DTS:CreationName="ADO.NET:OLEDB"
+      DTS:DTSID="{A5684C9A-7A8A-4B06-93B3-D9FD0FF8F2B5}"
+      DTS:ObjectName="Loop_TABULAR">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::TABULAR_ServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TABULAR;Provider=MSOLAP.6;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Mail_Subsystem]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{62F75FF2-B3C4-457F-AD56-23214BCCDD31}"
+      DTS:ObjectName="Mail_Subsystem">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source=" + @[$Project::DB_ServerName] + ";Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Process_SSAS_Cubes-{62F75FF2-B3C4-457F-AD56-23214BCCDD31}Mail_Subsystem;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DW;Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Process_SSAS_Cubes-{62F75FF2-B3C4-457F-AD56-23214BCCDD31}Mail_Subsystem;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[OLAP_Database]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{984D76FD-F888-45DA-A57E-0762B0C05683}"
+      DTS:ObjectName="OLAP_Database">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source="+ @[$Project::OLAP_ServerName] +";Provider=MSOLAP.5;Impersonation Level=Impersonate;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=OLAP;Provider=MSOLAP.5;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSAS_process.log]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F4AE000F-1BC2-4541-A98B-7E14204CDEE3}"
+      DTS:ObjectName="SSAS_process.log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="E:\Backup\CASFHQ3-SQLDV27$DWDEV\SSAS\SSAS_process.log" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TABULAR_Database]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{28095798-5FAA-40A8-A9C8-618B911723F5}"
+      DTS:ObjectName="TABULAR_Database">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Data Source="+ @[$Project::TABULAR_ServerName]  +";Provider=MSOLAP.5;Impersonation Level=Impersonate;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TABULAR;Provider=MSOLAP.5;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="SSAS_process.log"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="Writes log entries for events to a CSV file"
+      DTS:DTSID="{E41BA1D8-ED44-404B-A1FF-A06992AF903D}"
+      DTS:ObjectName="SSIS log provider for Text files">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{93957C2B-22AD-4C90-A735-B3FF24BFC8B5}"
+      DTS:ObjectName="OnError_Description">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9C93D735-7BF3-4B41-9495-D91056C2845A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OlapDatabaseName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7DE84166-5733-48C9-8A82-A793061E17EE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OlapProcessScript">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{82E8BFFC-C824-4307-9329-08F0B5BFF349}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TabDatabaseName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8D72CCE6-8651-4837-925F-3E849C687ADD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TabProcessScript">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">3,7,OnError,13,OnInformation,13,OnPostExecute</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach OLAP objects"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{B84C6E3E-89B4-4BC6-A241-1B3B9C94F6A6}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach OLAP objects">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachSchemaRowsetEnumerator"
+        DTS:DTSID="{E7E98278-E500-4AA2-A74D-770AADFADB0B}"
+        DTS:ObjectName="{E7E98278-E500-4AA2-A74D-770AADFADB0B}">
+        <DTS:ObjectData>
+          <FEESchemaRowset
+            Connection="Loop_OLAP"
+            Schema="c8b52211-5cf3-11ce-ade5-00aa0044773d" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach OLAP objects\Analysis Services Execute DDL Task"
+          DTS:CreationName="Microsoft.ASExecuteDDLTask"
+          DTS:Description="Analysis Services Execute DDL Task"
+          DTS:DTSID="{82F2B9B3-7438-4153-9F99-F50FC7D69FC0}"
+          DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Analysis Services Execute DDL Task"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ASDdlData
+              ConnectionName="OLAP_Database"
+              SourceType="Variable"
+              Source="User::OlapProcessScript" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach OLAP objects\Script Task"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{440E0D33-4DF3-4B7E-A2C3-0D467B848F3D}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Script Task"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData />
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach OLAP objects.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BA8FF31C-9F3E-41DC-8E03-DD3E52359124}"
+          DTS:From="Package\Foreach OLAP objects\Script Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach OLAP objects\Analysis Services Execute DDL Task" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{EC93EF60-E8FA-470A-A0F7-BF98ABC21700}"
+          DTS:ObjectName="{EC93EF60-E8FA-470A-A0F7-BF98ABC21700}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::OlapDatabaseName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach TABULAR objects"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{A84A2854-7B97-470D-8486-008926DC2264}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach TABULAR objects">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachSchemaRowsetEnumerator"
+        DTS:DTSID="{A500023F-D987-4691-B0EC-D3F914B9A719}"
+        DTS:ObjectName="{A500023F-D987-4691-B0EC-D3F914B9A719}">
+        <DTS:ObjectData>
+          <FEESchemaRowset
+            Connection="Loop_TABULAR"
+            Schema="c8b52211-5cf3-11ce-ade5-00aa0044773d" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach TABULAR objects\Analysis Services Execute DDL Task"
+          DTS:CreationName="Microsoft.ASExecuteDDLTask"
+          DTS:Description="Analysis Services Execute DDL Task"
+          DTS:DTSID="{c9cc3def-8f0d-435c-8b91-189e7967cbee}"
+          DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Analysis Services Execute DDL Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ASDdlData
+              ConnectionName="TABULAR_Database"
+              SourceType="Variable"
+              Source="User::TabProcessScript" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach TABULAR objects\Script Task"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{52F14C4C-F267-402F-9A69-FABF38AE6995}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Script Task"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData />
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach TABULAR objects.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{F722238D-4353-44DE-84E2-B08C47D9F12C}"
+          DTS:From="Package\Foreach TABULAR objects\Script Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach TABULAR objects\Analysis Services Execute DDL Task" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{BF123791-4EED-40ED-8D0D-1601097E67C2}"
+          DTS:ObjectName="{BF123791-4EED-40ED-8D0D-1601097E67C2}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::TabDatabaseName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Notify Operator Task"
+      DTS:CreationName="Microsoft.DbMaintenanceNotifyOperatorTask"
+      DTS:Description="Notify Operator Task"
+      DTS:DTSID="{AB4A8E74-D0CB-4337-B52B-50D59A7774A9}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceNotifyOperatorTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Notify Operator Task"
+      DTS:TaskContact="Notify Operator Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62F75FF2-B3C4-457F-AD56-23214BCCDD31}"
+          SQLTask:ServerVersion="11"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False"
+          SQLTask:Message="To view the details for the execution, right-click on the Integration Services Catalog, and open the [All Executions] report "
+          SQLTask:Profile="DefaultProfile"
+          SQLTask:Subject="Cubes processing failed" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:OperatorNotifyList
+            SQLTask:OperatorNotify="CUBEDEV" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{580AF6B6-3C0B-4B25-A7D4-075B67E7DD14}"
+      DTS:From="Package\Foreach OLAP objects"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Notify Operator Task"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B64047F9-6565-44E9-8130-BBB9E3A6DCBF}"
+      DTS:From="Package\Foreach TABULAR objects"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Notify Operator Task"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{4A86124E-E5FE-42E2-87C1-CB54F80B6842}"
+      DTS:EventID="724806524"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{09424842-D466-444E-B6FC-051CCF66701C}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Notify Operator Task"
+          DTS:CreationName="Microsoft.DbMaintenanceNotifyOperatorTask"
+          DTS:Description="Notify Operator Task"
+          DTS:DTSID="{FA5158D1-4BD6-4E06-B9D7-E91F57B267E3}"
+          DTS:ExecutableType="Microsoft.DbMaintenanceNotifyOperatorTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Notify Operator Task"
+          DTS:TaskContact="Notify Operator Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{62F75FF2-B3C4-457F-AD56-23214BCCDD31}"
+              SQLTask:ServerVersion="11"
+              SQLTask:ExtendedLogging="True"
+              SQLTask:LocalConnectionForLogging=""
+              SQLTask:TaskName=""
+              SQLTask:IgnoreDatabasesInNotOnlineState="False"
+              SQLTask:Message="N/A"
+              SQLTask:Profile="DefaultProfile"
+              SQLTask:Subject="Cube process failed" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:OperatorNotifyList
+                SQLTask:OperatorNotify="CUBEDEV" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Foreach OLAP objects\Analysis Services Execute DDL Task"
+          TopLeft="51,104" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Foreach OLAP objects\Script Task"
+          TopLeft="55.4987454851976,23.1345074600513" />
+        <EdgeLayout
+          Id="Package\Foreach OLAP objects.PrecedenceConstraints[Constraint]"
+          TopLeft="120.998745485198,65.1345074600513">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.5012545148024,38.8654925399487"
+              Start="0,0"
+              End="53.5012545148024,31.3654925399487">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4327462699743" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4327462699743"
+                    Point2="0,19.4327462699743"
+                    Point3="4,19.4327462699743" />
+                  <mssgle:LineSegment
+                    End="49.5012545148024,19.4327462699743" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.5012545148024,19.4327462699743"
+                    Point2="53.5012545148024,19.4327462699743"
+                    Point3="53.5012545148024,23.4327462699743" />
+                  <mssgle:LineSegment
+                    End="53.5012545148024,31.3654925399487" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="362,201"
+          Size="362,244"
+          Id="Package\Foreach OLAP objects"
+          TopLeft="42.5741970286656,25.1537860083514" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Foreach TABULAR objects\Analysis Services Execute DDL Task"
+          TopLeft="74.316400434764,113.707787244722" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Foreach TABULAR objects\Script Task"
+          TopLeft="79,35" />
+        <EdgeLayout
+          Id="Package\Foreach TABULAR objects.PrecedenceConstraints[Constraint]"
+          TopLeft="144.5,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.316400434764,36.7077872447217"
+              Start="0,0"
+              End="53.316400434764,29.2077872447217">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3538936223608" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3538936223608"
+                    Point2="0,18.3538936223608"
+                    Point3="4,18.3538936223608" />
+                  <mssgle:LineSegment
+                    End="49.316400434764,18.3538936223608" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.316400434764,18.3538936223608"
+                    Point2="53.316400434764,18.3538936223608"
+                    Point3="53.316400434764,22.3538936223608" />
+                  <mssgle:LineSegment
+                    End="53.316400434764,29.2077872447217" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="362,200"
+          Size="362,243"
+          Id="Package\Foreach TABULAR objects"
+          TopLeft="496,26" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Notify Operator Task"
+          TopLeft="359.816461499419,317.136371457398" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="223.574197028666,269.153786008351">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.575597804087,47.9825854490467"
+              Start="0,0"
+              End="196.575597804087,40.4825854490467">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5316381561521" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5316381561521"
+                    Point2="0,28.5316381561521"
+                    Point3="4,28.5316381561521" />
+                  <mssgle:LineSegment
+                    End="192.575597804087,28.5316381561521" />
+                  <mssgle:CubicBezierSegment
+                    Point1="192.575597804087,28.5316381561521"
+                    Point2="196.575597804087,28.5316381561521"
+                    Point3="196.575597804087,32.5316381561521" />
+                  <mssgle:LineSegment
+                    End="196.575597804087,40.4825854490467" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.24134765625,NaN,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="677,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-200.516871833914,48.1363714573981"
+              Start="0,0"
+              End="-200.516871833914,40.6363714573981">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6230831398414" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.6230831398414"
+                    Point2="0,28.6230831398414"
+                    Point3="-4,28.6230831398414" />
+                  <mssgle:LineSegment
+                    End="-196.516871833914,28.6230831398414" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-196.516871833914,28.6230831398414"
+                    Point2="-200.516871833914,28.6230831398414"
+                    Point3="-200.516871833914,32.6230831398414" />
+                  <mssgle:LineSegment
+                    End="-200.516871833914,40.6363714573981" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-115.499783573207,33.6230831398414,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[OLAP_Database]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[TABULAR_Database]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\Notify Operator Task"
+          TopLeft="294,86" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
