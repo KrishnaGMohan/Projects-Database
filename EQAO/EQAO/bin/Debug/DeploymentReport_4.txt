@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[tabDataGrade3]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[tabDataGrade3] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_tabDataGrade3_tabSchool] (Foreign Key)
+     Create
+       [dbo].[FK_tabDataGrade3_tabSchool] (Foreign Key)

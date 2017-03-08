@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[tabDataGrade3]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column school_id in table [dbo].[tabDataGrade3] is currently  INT NOT NULL but is being changed to 
+         SMALLINT NOT NULL. Data loss could occur.
+
+** User actions
+     Table rebuild
+       [dbo].[tabDataGrade3] (Table)
+     Create
+       [dbo].[FK_tabDataGrade3_tabSchool] (Foreign Key)
+
+** Supporting actions
+
+The type for column school_id in table [dbo].[tabDataGrade3] is currently  INT NOT NULL but is being changed to  SMALLINT NOT NULL. Data loss could occur.
+

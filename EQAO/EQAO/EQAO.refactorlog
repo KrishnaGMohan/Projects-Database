@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="aafcd3f8-3396-49a5-82eb-ff0776785963" ChangeDateTime="03/07/2017 17:29:28">
+    <Property Name="ElementName" Value="[dbo].[tabDataGrade3].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade3]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdSchool" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c8730d44-da7b-45c0-995b-f467ad5aa2b8" ChangeDateTime="03/07/2017 17:37:50">
+    <Property Name="ElementName" Value="[dbo].[tabDataGrade3].[perc_ELLs]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade3]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ELLs" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6cce2b09-5e95-4082-80a6-b02e951f0809" ChangeDateTime="03/07/2017 17:41:28">
+    <Property Name="ElementName" Value="[dbo].[tabDataGrade3].[IdSchool]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade3]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="school_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d713f1f4-ed31-4f1a-8cad-04936457c6d9" ChangeDateTime="03/07/2017 17:41:31">
+    <Property Name="ElementName" Value="[dbo].[tabDataGrade3].[Year]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade3]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="year" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ac7aa0bd-2ea0-4b83-b112-236ddc62df9d" ChangeDateTime="03/07/2017 17:41:39">
+    <Property Name="ElementName" Value="[dbo].[tabDataGrade3].[specialEducation]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade3]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="special_education" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="60e4c363-5a89-4f90-9400-7b7f1d462a49" ChangeDateTime="03/07/2017 18:19:31">
+    <Property Name="ElementName" Value="[dbo].[FK_tabDataGrade3_tabSchool]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade6]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_tabDataGrade6_tabSchool]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1af4e5a2-344c-443a-825f-fc9d962bdac1" ChangeDateTime="03/07/2017 18:35:19">
+    <Property Name="ElementName" Value="[dbo].[tabDataGrade6].[year]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade6]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="school_year" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="26fcc285-bdc0-4f3a-b05d-ccce98aeb920" ChangeDateTime="03/07/2017 18:35:35">
+    <Property Name="ElementName" Value="[dbo].[tabDataGrade3].[year]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabDataGrade3]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="school_year" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cd339c83-dc5d-43a6-9da6-5923600f973f" ChangeDateTime="03/07/2017 19:25:03">
+    <Property Name="ElementName" Value="[dbo].[Table1].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Table1]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="school_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aaba3191-9dc7-4294-99d5-cebd0dea576d" ChangeDateTime="03/07/2017 19:26:40">
+    <Property Name="ElementName" Value="[dbo].[Table1].[academic_spec_ed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Table1]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="academic_special_education" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="65dc2dbf-4f04-46dd-b904-4d5e07661be2" ChangeDateTime="03/07/2017 19:32:47">
+    <Property Name="ElementName" Value="[dbo].[tabSchool].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabSchool]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="school_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e01f4128-0771-4832-a13e-278ff3f0ab5e" ChangeDateTime="03/07/2017 19:32:53">
+    <Property Name="ElementName" Value="[dbo].[tabSchool].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tabSchool]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="name" />
+  </Operation>
+</Operations>

@@ -1,0 +1,5 @@
+D:\Personal\OneDrive\Projects\Projects-Database\EQAO\EQAO\bin\Debug\EQAO.dacpac
+D:\Personal\OneDrive\Projects\Projects-Database\EQAO\EQAO\bin\Debug\EQAO.dll
+D:\Personal\OneDrive\Projects\Projects-Database\EQAO\EQAO\bin\Debug\EQAO.pdb
+D:\Personal\OneDrive\Projects\Projects-Database\EQAO\EQAO\obj\Debug\EQAO.dll
+D:\Personal\OneDrive\Projects\Projects-Database\EQAO\EQAO\obj\Debug\EQAO.pdb

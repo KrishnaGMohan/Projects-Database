@@ -1,0 +1,23 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[tabDataGrade3] (Table)
+       [dbo].[tabDataGrade6] (Table)
+       [dbo].[tabSchool] (Table)
+       Default Constraint: unnamed constraint on [dbo].[tabDataGrade3] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[tabDataGrade6] (Default Constraint)
+       [dbo].[FK_tabDataGrade3_tabSchool] (Foreign Key)
+       [dbo].[FK_tabDataGrade6_tabSchool] (Foreign Key)
+       [dbo].[CK_tabDataGrade3_grade] (Check Constraint)
+       [dbo].[CK_tabDataGrade6_grade] (Check Constraint)
+
+** Supporting actions
